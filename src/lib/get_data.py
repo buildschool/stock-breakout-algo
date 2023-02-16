@@ -10,7 +10,6 @@ def get_data(symbol, start_date, end_date):
         if df.empty:
             return None
         else:
-            print(df.columns)
             df['weekly change'] = df['Close'].pct_change(5)
             df['monthly change'] = df['Close'].pct_change(20)
             df['yearly change'] = df['Close'].pct_change(250)
