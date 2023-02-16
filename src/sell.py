@@ -11,7 +11,7 @@ def sell():
     positions = get_positions()
     if positions:
         for position in positions:
-            data = get_data(position.symbol)
+            data = get_data(position.symbol, '1y', '1d')
             last = data.iloc[-1]
             if last['rsi'] > 70:
                 if last['weekly change'] * 100 < 0:
