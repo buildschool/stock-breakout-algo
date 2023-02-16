@@ -8,7 +8,7 @@ def batch_job():
     today = datetime.today()
     year_ago = today - timedelta(days=365)
     today = today.date()
-    today = today - timedelta(days=1)
+    today = today
     year_ago = year_ago.date()
     folder_path = 'src/data/'
     if assets:
