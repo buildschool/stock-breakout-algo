@@ -10,6 +10,7 @@ def buy_stock( symbol, qty):
             type='market',
             time_in_force='gtc'
         )
+        print(out)
         return out
     except Exception as e:
         print(e)
