@@ -1,5 +1,5 @@
-alpaca_trade_api
-python_dotenv
+alpaca-trade-api
+python-dotenv
 ta-lib
 pandas-market-calendars
 pandas
