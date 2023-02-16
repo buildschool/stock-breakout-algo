@@ -1,0 +1,3 @@
+timestamp,open,high,low,close,volume,trade_count,vwap,weekly change,monthly change,yearly change,relative_vol,rsi
+2022-02-23 05:00:00+00:00,55.36,55.36,54.58,54.58,108793,297,54.716246,,,,1.8490261395696659,
+2022-02-24 05:00:00+00:00,53.89,55.27,53.8,55.27,8883,236,54.589596,,,,0.15097386043033414,
