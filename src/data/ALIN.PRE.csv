@@ -1,3 +1,3 @@
-timestamp,open,high,low,close,volume,trade_count,vwap,weekly change,monthly change,yearly change,relative_vol,rsi
-2022-02-23 05:00:00+00:00,3.73,4.0,3.73,3.981,3485,33,3.977394,,,,0.9100404752578666,
-2022-02-24 05:00:00+00:00,3.84,4.49,3.8,4.49,4174,79,4.079008,,,,1.0899595247421334,
+timestamp,open,high,low,close,volume,trade_count,vwap,weekly change,monthly change,yearly change,relative_vol,rsi,symbol
+2022-02-23 05:00:00+00:00,3.73,4.0,3.73,3.981,3485,33,3.977394,,,,0.9100404752578666,,ALIN.PRE
+2022-02-24 05:00:00+00:00,3.84,4.49,3.8,4.49,4174,79,4.079008,,,,1.0899595247421334,,ALIN.PRE

@@ -16,13 +16,9 @@ def batch_job():
             file_name = f'{asset.symbol}.csv'
             try:
                 df = get_data(asset.symbol, today, year_ago)
-            except Exception as e:
-                print(e)
-            try:
-                if len(df) == 0 or df is None:
-                    pass
-                else:
-                    df.to_csv(folder_path + file_name)
+                if df is not None:
+                    if len(df) > 0:
+                        df.to_csv(folder_path + file_name)
             except Exception as e:
                 print(e)
     return True
