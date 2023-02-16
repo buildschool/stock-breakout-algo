@@ -13,9 +13,10 @@ def batch_job():
     folder_path = 'src/data/'
     if assets:
         for asset in assets:
-            file_name = f'{asset.symbol}.csv'
+            ticker = asset['Ticker']
+            file_name = f'{ticker}.csv'
             try:
-                df = get_data(asset.symbol, today, year_ago)
+                df = get_data(ticker, today, year_ago)
                 if df is not None:
                     if len(df) > 0:
                         df.to_csv(folder_path + file_name)

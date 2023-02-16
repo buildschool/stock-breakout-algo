@@ -1,19 +1,22 @@
-from trade_client import trade_client
+import yfinance as yf
 import talib
+import pandas as pd
 
 def get_data(symbol, start_date, end_date):
     try:
-        api = trade_client()
-        df = api.get_bars(symbol, '1D', start=end_date, end=start_date).df
+        tick = yf.Ticker(symbol)
+        fin = tick.history(period="1y", interval="1d", auto_adjust=True)
+        df = pd.DataFrame(fin)
         if df.empty:
             return None
         else:
-            df['weekly change'] = df['close'].pct_change(5)
-            df['monthly change'] = df['close'].pct_change(20)
-            df['yearly change'] = df['close'].pct_change(250)
-            avg_vol = df['volume'].mean()
-            df['relative_vol'] = df['volume'] / avg_vol
-            df['rsi'] = talib.RSI(df['close'])
+            print(df.columns)
+            df['weekly change'] = df['Close'].pct_change(5)
+            df['monthly change'] = df['Close'].pct_change(20)
+            df['yearly change'] = df['Close'].pct_change(250)
+            avg_vol = df['Volume'].mean()
+            df['relative_vol'] = df['Volume'] / avg_vol
+            df['rsi'] = talib.RSI(df['Close'])
             df['symbol'] = symbol
             return df
     except Exception as e:

@@ -4,3 +4,5 @@ ta-lib
 pandas-market-calendars
 pandas
 numpy
+finviz
+yfinance 

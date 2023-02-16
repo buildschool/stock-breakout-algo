@@ -5,6 +5,10 @@ from lib.get_if_market_day import get_if_market_day
 from lib.get_positions import get_positions
 import pandas as pd
 import math
+import warnings
+
+# Ignore warnings
+warnings.filterwarnings("ignore")
 
 def buy():
     stocks = get_stocks()
@@ -31,16 +35,16 @@ def buy():
                     #         else:
                     #             end_arr.append(stock)
                     if len(end_arr) == 1:
-                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['close'].iloc[-1]))
+                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
                         buy_stock(end_arr.iloc[-1]['symbol'], qty)
                     elif len(end_arr) > 1:
-                        print(end_arr[len(end_arr) - 1]['close'].iloc[-1])
-                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['close'].iloc[-1]))
+                        print(end_arr[len(end_arr) - 1]['Close'].iloc[-1])
+                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
                         buy_stock(end_arr[len(end_arr) - 1]['symbol'].iloc[-1], qty)
                 elif len(arr) == 1:
                     end_arr = arr
-                    print(end_arr[len(end_arr) - 1]['close'].iloc[-1])
-                    qty = math.floor(power / end_arr[len(end_arr) - 1]['close'].iloc[-1])
+                    print(end_arr[len(end_arr) - 1]['Close'].iloc[-1])
+                    qty = math.floor(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1])
                     buy_stock(end_arr[len(end_arr) - 1]['symbol'].iloc[-1], qty)
         except Exception as e:
             print(e)

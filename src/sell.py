@@ -2,6 +2,10 @@ from lib.sell_stock import sell_stock
 from lib.get_data import get_data
 from lib.get_if_market_day import get_if_market_day
 from lib.get_positions import get_positions
+import warnings
+
+# Ignore warnings
+warnings.filterwarnings("ignore")
 
 def sell():
     positions = get_positions()
