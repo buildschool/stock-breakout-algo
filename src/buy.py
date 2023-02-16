@@ -9,10 +9,10 @@ def buy():
     arr = []
     if stocks:
         for stock in stocks:
-            last = stock.tail(1)
-            if last['weekly change'] > 25:
+            last = stock.iloc[-1]
+            if last['weekly change'] * 100 > 25:
                 if last['rsi'] < 70:
-                    if last['relative volume'] > 1.5:
+                    if last['relative_vol'] > 1.5:
                         arr.append(stock)
         try:
             arr = sorted(arr, reverse=True)

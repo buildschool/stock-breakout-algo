@@ -1,4 +1,4 @@
-from trade_client import trade_client
+from .trade_client import trade_client
 
 def get_positions():
     client = trade_client()
