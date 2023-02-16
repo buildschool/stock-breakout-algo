@@ -19,14 +19,19 @@ def buy():
             power = get_buying_power()
             if power > 0:
                 power = power / 10
-                qty = power / arr.tail(1)['price']
+                qty = power / arr[0]['close']
                 try:
                     positions = get_positions()
-                    for position in positions:
-                        if position.symbol == arr[0]['symbol']:
-                            pass
-                        else:
-                            buy_stock(arr[0]['symbol'], qty)
+                    for stock, j in enumerate(arr):
+                        for position in enumerate(positions):
+                            if position.symbol == arr[j]['symbol']:
+                                arr.pop(j)
+                            else:
+                                pass
+                    try:
+                        buy_stock(arr[0]['symbol'], qty)
+                    except Exception as e:
+                        print(e)
                 except Exception as e:
                     print(e)
         except Exception as e:

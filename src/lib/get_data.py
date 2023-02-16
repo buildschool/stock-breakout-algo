@@ -11,6 +11,7 @@ def get_data(symbol, start_date, end_date):
         avg_vol = df['volume'].mean()
         df['relative_vol'] = df['volume'] / avg_vol
         df['rsi'] = talib.RSI(df['close'])
+        df['symbol'] = symbol
         return df
     except Exception as e:
         print(e)
