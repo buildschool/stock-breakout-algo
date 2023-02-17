@@ -1,4 +1,4 @@
-alpaca-trade-api
+alpaca-trade-api==2.3.0
 python-dotenv
 ta-lib
 pandas-market-calendars
