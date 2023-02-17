@@ -24,26 +24,28 @@ def buy():
             power = get_buying_power()
             power = power / 10
             if power > 0:
-                positions = get_positions()
+                positions  = get_positions()
                 end_arr = []
                 if len(arr) > 1:
                     end_arr = arr
-                    # for stock in arr:
-                    #     for position in positions:
-                    #         if position.symbol == stock[0]['symbol']:
-                    #             pass
-                    #         else:
-                    #             end_arr.append(stock)
+                    for stock in arr:
+                        for position in positions:
+                            if position.symbol == stock['Close'].iloc[-1]:
+                                pass
+                            else:
+                                end_arr.append(stock)
                     if len(end_arr) == 1:
                         qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
                         buy_stock(end_arr.iloc[-1]['symbol'], qty)
                     elif len(end_arr) > 1:
-                        print(end_arr[len(end_arr) - 1]['Close'].iloc[-1])
                         qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
                         buy_stock(end_arr[len(end_arr) - 1]['symbol'].iloc[-1], qty)
                 elif len(arr) == 1:
-                    end_arr = arr
-                    print(end_arr[len(end_arr) - 1]['Close'].iloc[-1])
+                    for position in positions:
+                            if position.symbol == stock['Close'].iloc[-1]:
+                                pass
+                            else:
+                                end_arr.append(stock)
                     qty = math.floor(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1])
                     buy_stock(end_arr[len(end_arr) - 1]['symbol'].iloc[-1], qty)
         except Exception as e:
