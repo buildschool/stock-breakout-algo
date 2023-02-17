@@ -30,19 +30,19 @@ def buy():
                     end_arr = arr
                     for stock in arr:
                         for position in positions:
-                            if position.symbol == stock['Close'].iloc[-1]:
+                            if position.symbol == stock.iloc[-1]['Close']:
                                 pass
                             else:
                                 end_arr.append(stock)
                     if len(end_arr) == 1:
-                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
+                        qty = math.floor(float(power / end_arr[len(end_arr) - 1].iloc[-1]['Close']))
                         buy_stock(end_arr.iloc[-1]['symbol'], qty)
                     elif len(end_arr) > 1:
-                        qty = math.floor(float(power / end_arr[len(end_arr) - 1]['Close'].iloc[-1]))
-                        buy_stock(end_arr[len(end_arr) - 1]['symbol'].iloc[-1], qty)
+                        qty = math.floor(float(power / end_arr[len(end_arr) - 1].iloc[-1]['Close']))
+                        buy_stock(end_arr[len(end_arr) - 1].iloc[-1]['symbol'], qty)
                 elif len(arr) == 1:
                     for position in positions:
-                            if position.symbol == stock['Close'].iloc[-1]:
+                            if position.symbol == stock.iloc[-1]['Close']:
                                 pass
                             else:
                                 end_arr.append(stock)
