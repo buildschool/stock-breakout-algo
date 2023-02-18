@@ -6,3 +6,6 @@ pandas
 numpy
 finviz
 yfinance 
+robin_stocks
+pyotp
+datetime

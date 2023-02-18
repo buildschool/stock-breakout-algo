@@ -1,15 +1,10 @@
-from .trade_client import trade_client
+from rh.login import login
+from robin_stocks.robinhood import rh
 
 def buy_stock( symbol, qty):
     try:
-        api = trade_client()
-        out = api.submit_order(
-            symbol=symbol,
-            qty=qty,
-            side='buy',
-            type='market',
-            time_in_force='gtc'
-        )
+        login()
+        out = rh.order_buy_market(symbol, qty)
         print(out)
         return out
     except Exception as e:
