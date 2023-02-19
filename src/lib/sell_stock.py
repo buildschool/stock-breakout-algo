@@ -1,4 +1,4 @@
-from rh.login import login
+from login import login
 import robin_stocks
 
 def sell_stock(symbol, qty):
