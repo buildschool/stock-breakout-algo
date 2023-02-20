@@ -17,6 +17,8 @@ def get_data(symbol, start_date, end_date):
             df['relative_vol'] = df['Volume'] / avg_vol
             df['rsi'] = talib.RSI(df['Close'])
             df['symbol'] = symbol
+            df['sma50'] = talib.SMA(df['Close'], timeperiod=50)
+            df['sma200'] = talib.SMA(df['Close'], timeperiod=200)
             return df
     except Exception as e:
         print(e)

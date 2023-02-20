@@ -18,8 +18,9 @@ def buy():
         for stock in stocks:
             last = stock.iloc[-1]
             if last['rsi'] < 70:
-                if last['relative_vol'] > 1.5:
-                    arr.append(stock)
+                if last['sma50'] > last['sma200']:
+                    if last['relative_vol'] > 1.5:
+                        arr.append(stock)
         try:
             arr = sorted(arr, key=lambda df: df.iloc[-1]['weekly change'], reverse=True)
             power = get_buying_power()

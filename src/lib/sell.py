@@ -14,8 +14,9 @@ def sell():
             data = get_data(position.symbol, '1y', '1d')
             last = data.iloc[-1]
             if last['rsi'] > 90:
-                if last['relative_vol'] < 1.5:
-                    sell_stock(position.symbol, position.qty)
+                if last['sma50'] < last['sma200']:
+                    if last['relative_vol'] < 1:
+                        sell_stock(position.symbol, position.qty)
         return "Sell complete"
     else: 
         return "No positions to sell" 
