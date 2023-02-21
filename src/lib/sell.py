@@ -13,7 +13,7 @@ def sell():
         for position in positions:
             data = get_data(position.symbol, '1y', '1d')
             last = data.iloc[-1]
-            if last['rsi'] > 90:
+            if last['rsi'] > 70:
                 if last['sma50'] < last['sma200']:
                     if last['relative_vol'] < 1:
                         sell_stock(position.symbol, position.qty)
