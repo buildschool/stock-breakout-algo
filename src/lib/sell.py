@@ -9,14 +9,22 @@ warnings.filterwarnings("ignore")
 
 def sell():
     positions = get_positions()
+    positions = list(positions.keys())
     if positions:
         for position in positions:
-            data = get_data(position.symbol, '1y', '1d')
+            data = get_data(position, '1y', '1d')
             last = data.iloc[-1]
             if last['rsi'] > 70:
                 if last['sma50'] < last['sma200']:
                     if last['relative_vol'] < 1:
-                        sell_stock(position.symbol, position.qty)
+                        print('sell', position)
+                        # sell_stock(position.symbol, position.qty)
+                    else:
+                        print(position + ' not sold')
+                else:
+                    print(position + ' not sold')
+            else:
+                print(position + ' not sold')
         return "Sell complete"
     else: 
         return "No positions to sell" 
