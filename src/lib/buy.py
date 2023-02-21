@@ -12,6 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def buy():
+    fraction = 2
     out = batch_job()
     if out == True:
         stocks = get_stocks()
@@ -34,7 +35,7 @@ def buy():
             try:    
                 out = sorted(out, key=lambda df: df.iloc[-1]['rsi'], reverse=False)
                 power = get_buying_power()
-                power = math.floor(float(power) / 10)
+                power = math.floor(float(power) / fraction)
                 if power > 0:
                     arr = sorted(arr, key=lambda df: df.iloc[-1]['rsi'], reverse=False)
                     qty = math.floor(power / arr[0]['Close'].iloc[-1])
