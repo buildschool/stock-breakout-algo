@@ -6,3 +6,4 @@ datetime
 finviz
 pandas_market_calendars
 python-dotenv
+TA-Lib
