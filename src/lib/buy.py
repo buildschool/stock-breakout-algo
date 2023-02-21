@@ -17,6 +17,7 @@ warnings.filterwarnings("ignore")
 
 def buy():
     fraction = os.getenv('FRACTION')
+    fraction = float(fraction)
     out = batch_job()
     if out == True:
         stocks = get_stocks()
@@ -27,10 +28,8 @@ def buy():
                 arr.append(stock)
             positions = get_positions()
             symbols = list(positions.keys())
-            print(symbols)
             out = []
             for symbol in symbols:
-                print(symbol)
                 for stock in arr:
                     if symbol == stock['symbol'].iloc[-1]:
                         continue
