@@ -2,7 +2,6 @@ robin_stocks
 pandas
 numpy
 yfinance
-ta-lib
 datetime
 finviz
 pandas_market_calendars
