@@ -6,6 +6,6 @@ pandas
 numpy
 finviz
 yfinance 
-robin-stocks=2.1.0
+robin-stocks
 pyotp
 datetime
