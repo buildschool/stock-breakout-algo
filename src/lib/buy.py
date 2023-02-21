@@ -2,9 +2,6 @@ from buy_stock import buy_stock
 from get_stocks import get_stocks
 from get_buying_power import get_buying_power
 from get_if_market_day import get_if_market_day
-from get_positions import get_positions
-from prediction import predict_top_gainer
-import pandas as pd
 import math
 import warnings
 
@@ -17,19 +14,15 @@ def buy():
     if stocks:
         for stock in stocks:
             last = stock.iloc[-1]
-            print(last['symbol'])
-            if last['rsi'] < 30:
-                if last['sma50'] > last['sma200']:
-                    if last['relative_vol'] > 1.5:
-                        arr.append(stock)
+            arr.append(stock)
         try:
             arr = sorted(arr, key=lambda df: df.iloc[-1]['weekly change'], reverse=True)
             power = get_buying_power()
-            power = power / 10
+            power = math.floor(float(power) / 10)
             if power > 0:
-                stock_to_buy = predict_top_gainer(arr)
-                qty = math.floor(power / stock_to_buy['Close'].iloc[-1])
-                buy_stock(stock_to_buy['symbol'].iloc[-1], qty)
+                arr = sorted(arr, key=lambda df: df.iloc[-1]['rsi'], reverse=False)
+                qty = math.floor(power / arr[0]['Close'].iloc[-1])
+                buy_stock(arr[0]['symbol'].iloc[-1], qty)
         except Exception as e:
             print(e)
 
