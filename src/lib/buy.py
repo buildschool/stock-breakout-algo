@@ -12,7 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def buy():
-    fraction = 2
+    fraction = 5
     out = batch_job()
     if out == True:
         stocks = get_stocks()
