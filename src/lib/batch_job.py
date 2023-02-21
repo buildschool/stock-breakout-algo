@@ -1,7 +1,8 @@
 from get_assets import get_assets
 from get_data import get_data
 from datetime import datetime, timedelta
-import talib
+import shutil
+import os
 
 def batch_job():
     assets = get_assets()
@@ -11,6 +12,16 @@ def batch_job():
     today = today
     year_ago = year_ago.date()
     folder_path = 'src/data/'
+    folder = 'src/data/'
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
     if assets:
         for asset in assets:
             ticker = asset['Ticker']
