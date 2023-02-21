@@ -16,7 +16,7 @@ load_dotenv()
 warnings.filterwarnings("ignore")
 
 def buy():
-    fraction = os.getenv('FRACTION'')
+    fraction = os.getenv('FRACTION')
     out = batch_job()
     if out == True:
         stocks = get_stocks()
