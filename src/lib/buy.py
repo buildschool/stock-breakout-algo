@@ -7,12 +7,16 @@ from batch_job import batch_job
 import pandas as pd
 import math
 import warnings
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Ignore warnings
 warnings.filterwarnings("ignore")
 
 def buy():
-    fraction = 5
+    fraction = os.getenv('FRACTION'')
     out = batch_job()
     if out == True:
         stocks = get_stocks()
