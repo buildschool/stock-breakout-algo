@@ -22,6 +22,7 @@ def buy():
                     if last['relative_vol'] > 1.5:
                         arr.append(stock)
         try:
+            print(arr)
             arr = sorted(arr, key=lambda df: df.iloc[-1]['weekly change'], reverse=True)
             power = get_buying_power()
             power = power / 10
@@ -32,8 +33,8 @@ def buy():
         except Exception as e:
             print(e)
 
-# day = get_if_market_day()
-# if day == True:
+day = get_if_market_day()
+if day == True:
     buy()
-# else:
-#     print('Not a market day')
+else:
+    print('Not a market day')
