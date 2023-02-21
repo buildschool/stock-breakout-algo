@@ -2,6 +2,8 @@ from buy_stock import buy_stock
 from get_stocks import get_stocks
 from get_buying_power import get_buying_power
 from get_if_market_day import get_if_market_day
+from get_positions import get_positions
+import pandas as pd
 import math
 import warnings
 
@@ -15,8 +17,19 @@ def buy():
         for stock in stocks:
             last = stock.iloc[-1]
             arr.append(stock)
-        try:
-            arr = sorted(arr, key=lambda df: df.iloc[-1]['weekly change'], reverse=True)
+        positions = get_positions()
+        symbols = list(positions.keys())
+        print(symbols)
+        out = []
+        for symbol in symbols:
+            print(symbol)
+            for stock in arr:
+                if symbol == stock['symbol'].iloc[-1]:
+                    continue
+                else:
+                    out.append(stock)
+        try:    
+            out = sorted(out, key=lambda df: df.iloc[-1]['rsi'], reverse=False)
             power = get_buying_power()
             power = math.floor(float(power) / 10)
             if power > 0:
