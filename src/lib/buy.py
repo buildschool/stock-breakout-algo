@@ -34,8 +34,7 @@ def buy():
                     if symbol == stock['symbol'].iloc[-1]:
                         continue
                     else:
-                        if 70 > stock['rsi'].iloc[-1] > 50:
-                            out.append(stock)
+                        out.append(stock)
             try:    
                 out = sorted(out, key=lambda df: df.iloc[-1]['rsi'], reverse=False)
                 power = get_buying_power()
