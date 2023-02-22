@@ -21,11 +21,13 @@ def buy():
     out = batch_job()
     if out == True:
         stocks = get_stocks()
+        print(stocks)
         arr = []
         if stocks:
             for stock in stocks:
                 last = stock.iloc[-1]
-                arr.append(stock)
+                if last['sma50'] > last['sma200']:
+                    arr.append(stock)
             positions = get_positions()
             symbols = list(positions.keys())
             out = []

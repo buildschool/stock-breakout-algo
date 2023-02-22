@@ -23,14 +23,17 @@ def batch_job():
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
     if assets:
-        for asset in assets:
-            ticker = asset['Ticker']
-            file_name = f'{ticker}.csv'
-            try:
-                df = get_data(ticker, today, year_ago)
-                if df is not None:
-                    if len(df) > 0:
-                        df.to_csv(folder_path + file_name)
-            except Exception as e:
-                print(e)
-    return True
+        try:
+            for asset in assets:
+                ticker = asset['Ticker']
+                file_name = f'{ticker}.csv'
+                try:
+                    df = get_data(ticker, today, year_ago)
+                    if df is not None:
+                        if len(df) > 0:
+                            df.to_csv(folder_path + file_name)
+                except Exception as e:
+                    print(e)
+            return True
+        except Exception as e:
+            print(e)
