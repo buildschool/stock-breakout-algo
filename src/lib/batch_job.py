@@ -34,6 +34,3 @@ def batch_job():
             except Exception as e:
                 print(e)
     return True
-
-out = batch_job()
-print(out)
