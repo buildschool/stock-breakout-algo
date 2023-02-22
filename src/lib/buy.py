@@ -21,7 +21,9 @@ def buy():
     out = batch_job()
     if out == True:
         stocks = get_stocks()
-        print(stocks)
+        print("Stocks:")
+        for stock in stocks:
+            print(stock['symbol'].iloc[-1])
         arr = []
         if stocks:
             for stock in stocks:
