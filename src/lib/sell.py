@@ -17,8 +17,7 @@ def sell():
             if last['rsi'] > 70:
                 if last['sma50'] < last['sma200']:
                     if last['relative_vol'] < 1:
-                        print('sell', position)
-                        # sell_stock(position.symbol, position.qty)
+                        sell_stock(position.symbol, position.qty)
                     else:
                         print(position + ' not sold')
                 else:
